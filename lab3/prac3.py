@@ -1,0 +1,17 @@
+import math
+import numpy as np
+students = []
+n = int(input("Number of students: "))
+for i in range(n):
+    name = input("Name: ")
+    marks = list(map(float, input("Marks: ").split()))
+    credits = list(map(int, input("Credits: ").split()))
+    marks = [math.floor(x * 10) / 10 for x in marks]
+    marks = np.array(marks)
+    credits = np.array(credits)
+    gpa = np.sum(marks * credits) / np.sum(credits)
+    students.append([name, gpa])
+students.sort(key=lambda x: x[1], reverse=True)
+print("\n===== STUDENTS =====")
+for s in students:
+    print(s[0], round(s[1], 1))
